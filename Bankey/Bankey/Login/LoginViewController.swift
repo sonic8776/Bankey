@@ -67,9 +67,24 @@ extension LoginViewController {
     }
     
     private func layout() {
+        view.addSubview(titleLabel)
+        view.addSubview(subtitleLabel)
         view.addSubview(loginView)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
+        
+        // Title
+        NSLayoutConstraint.activate([
+            subtitleLabel.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 3),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        // Subtitle
+        NSLayoutConstraint.activate([
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: subtitleLabel.bottomAnchor, multiplier: 3),
+            subtitleLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            subtitleLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor)
+        ])
         
         // LoginView
         NSLayoutConstraint.activate([
